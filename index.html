@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fiza Liaqat — MERN Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#060612;
+  --surface:#0d0b1e;
+  --card:#12102a;
+  --border:#1e1a3a;
+  --accent:#8b5cf6;
+  --accent2:#06b6d4;
+  --accent3:#10b981;
+  --text:#f1f0ff;
+  --muted:#6b688a;
+  --subtle:#2a2650;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(6,6,18,0.85);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+.logo{font-family:'Fira Code',monospace;font-size:1rem;color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.875rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.hero{min-height:100vh;display:flex;align-items:center;padding:6rem 2rem 4rem;max-width:1100px;margin:0 auto;position:relative;}
+.hero-content{max-width:640px;}
+.hero-tag{font-family:'Fira Code',monospace;font-size:0.8rem;color:var(--accent);background:rgba(139,92,246,0.1);border:0.5px solid rgba(139,92,246,0.3);padding:0.4rem 1rem;border-radius:999px;display:inline-block;margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:700;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.02em;}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:480px;margin-bottom:2rem;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn{padding:0.75rem 1.75rem;border-radius:8px;font-size:0.9rem;font-weight:500;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:#7c3aed;transform:translateY(-1px);}
+.btn-outline{background:transparent;color:var(--text);border:0.5px solid var(--border);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.orb1{width:400px;height:400px;background:rgba(139,92,246,0.12);top:-100px;right:-100px;}
+.orb2{width:300px;height:300px;background:rgba(6,182,212,0.08);bottom:0;right:200px;}
+section{max-width:1100px;margin:0 auto;padding:5rem 2rem;}
+.section-label{font-family:'Fira Code',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;}
+.section-title{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;margin-bottom:1rem;letter-spacing:-0.02em;}
+.section-line{width:48px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin-bottom:3rem;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.about-text p{color:var(--muted);font-size:1rem;margin-bottom:1rem;line-height:1.8;}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.stat-card{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;}
+.stat-num{font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-label{font-size:0.8rem;color:var(--muted);margin-top:0.25rem;}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.skill-card{background:var(--card);border:0.5px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color 0.2s,transform 0.2s;}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.skill-icon{font-size:1.5rem;margin-bottom:0.75rem;}
+.skill-card h3{font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem;}
+.tag{font-family:'Fira Code',monospace;font-size:0.72rem;padding:0.25rem 0.6rem;border-radius:999px;background:rgba(139,92,246,0.1);color:var(--accent);border:0.5px solid rgba(139,92,246,0.2);}
+.tag.green{background:rgba(16,185,129,0.1);color:var(--accent3);border-color:rgba(16,185,129,0.2);}
+.tag.cyan{background:rgba(6,182,212,0.1);color:var(--accent2);border-color:rgba(6,182,212,0.2);}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;}
+.project-card{background:var(--card);border:0.5px solid var(--border);border-radius:16px;padding:1.75rem;display:flex;flex-direction:column;transition:border-color 0.2s,transform 0.2s;position:relative;overflow:hidden;}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.2s;}
+.project-card:hover{border-color:var(--subtle);transform:translateY(-3px);}
+.project-card:hover::before{opacity:1;}
+.project-badge{font-family:'Fira Code',monospace;font-size:0.72rem;padding:0.3rem 0.75rem;border-radius:999px;display:inline-block;margin-bottom:1rem;width:fit-content;}
+.badge-purple{background:rgba(139,92,246,0.15);color:#a78bfa;border:0.5px solid rgba(139,92,246,0.3);}
+.badge-green{background:rgba(16,185,129,0.15);color:#34d399;border:0.5px solid rgba(16,185,129,0.3);}
+.badge-amber{background:rgba(245,158,11,0.15);color:#fcd34d;border:0.5px solid rgba(245,158,11,0.3);}
+.badge-cyan{background:rgba(6,182,212,0.15);color:#22d3ee;border:0.5px solid rgba(6,182,212,0.3);}
+.project-card h3{font-size:1.15rem;font-weight:600;margin-bottom:0.5rem;}
+.project-card p{font-size:0.9rem;color:var(--muted);flex:1;line-height:1.7;}
+.project-footer{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;padding-top:1rem;border-top:0.5px solid var(--border);}
+.project-tech{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.project-link{font-size:0.82rem;color:var(--accent);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:0.3rem;white-space:nowrap;}
+.project-link:hover{color:#a78bfa;}
+.contact-card{background:var(--card);border:0.5px solid var(--border);border-radius:20px;padding:3rem;text-align:center;position:relative;overflow:hidden;}
+.contact-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(139,92,246,0.05) 0%,transparent 70%);pointer-events:none;}
+.contact-card h3{font-size:1.5rem;font-weight:700;margin-bottom:0.75rem;}
+.contact-card p{color:var(--muted);margin-bottom:2rem;}
+.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.contact-link{padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-size:0.875rem;font-weight:500;transition:all 0.2s;border:0.5px solid var(--border);color:var(--text);}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);}
+.contact-link.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+.contact-link.primary:hover{background:#7c3aed;}
+footer{border-top:0.5px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:0.8rem;font-family:'Fira Code',monospace;}
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">&lt;fiza.dev /&gt;</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">👋 Available for work</div>
+    <h1>Hi, I'm <span>Fiza Liaqat</span> —<br/>MERN Stack Developer</h1>
+    <p>I build full-stack web applications that solve real problems. From hyper-local marketplaces to AI-powered tools — I turn ideas into working products.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="https://github.com/methaf5102006-cmyk" target="_blank" class="btn btn-outline">GitHub Profile</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-label">// about me</div>
+  <div class="section-title">Who I Am</div>
+  <div class="section-line"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a passionate MERN Stack Developer who loves building clean, functional, and impactful web applications. I believe good code solves real problems for real people.</p>
+      <p>Whether it's connecting local communities through a skill marketplace, building AI tool directories, or crafting immersive gaming UIs — I bring both technical skill and creative vision to every project.</p>
+      <p>I'm currently open to freelance projects and full-time opportunities where I can keep growing and shipping great work.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">MERN</div>
+        <div class="stat-label">Primary Stack</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Passion</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Learning Mode</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label">// tech stack</div>
+  <div class="section-title">What I Work With</div>
+  <div class="section-line"></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">⚛️</div>
+      <h3>Frontend</h3>
+      <p style="font-size:0.85rem;color:var(--muted);">Building responsive, interactive UIs</p>
+      <div class="skill-tags">
+        <span class="tag">React</span>
+        <span class="tag">Vite</span>
+        <span class="tag">HTML5</span>
+        <span class="tag">CSS3</span>
+        <span class="tag">JavaScript</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🖥️</div>
+      <h3>Backend</h3>
+      <p style="font-size:0.85rem;color:var(--muted);">REST APIs and server-side logic</p>
+      <div class="skill-tags">
+        <span class="tag green">Node.js</span>
+        <span class="tag green">Express.js</span>
+        <span class="tag green">REST API</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗄️</div>
+      <h3>Database & Tools</h3>
+      <p style="font-size:0.85rem;color:var(--muted);">Data management and dev workflow</p>
+      <div class="skill-tags">
+        <span class="tag cyan">MongoDB</span>
+        <span class="tag cyan">Git</span>
+        <span class="tag cyan">GitHub</span>
+        <span class="tag cyan">VS Code</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">// recent work</div>
+  <div class="section-title">Projects I've Built</div>
+  <div class="section-line"></div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <span class="project-badge badge-purple">Marketplace</span>
+      <h3>Skill-Link</h3>
+      <p>A hyper-local skill marketplace that connects skilled workers in your community with people who need them. Built to solve a real-world problem.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tag">React</span>
+          <span class="tag">Vite</span>
+          <span class="tag">JS</span>
+        </div>
+        <a href="https://github.com/methaf5102006-cmyk/Skill-link" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-badge badge-green">AI</span>
+      <h3>AI Tools Hub</h3>
+      <p>A curated directory of powerful AI tools with a clean, searchable interface. Built because AI is the future and I'm building for it now.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tag cyan">HTML</span>
+          <span class="tag cyan">CSS</span>
+        </div>
+        <a href="https://github.com/methaf5102006-cmyk/AI-Tools-" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-badge badge-amber">Gaming</span>
+      <h3>Gaming Website</h3>
+      <p>A bold, visually rich static gaming web page with immersive UI. Proof that great design and clean code go hand in hand.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+        </div>
+        <a href="https://github.com/methaf5102006-cmyk/Gaming-static-web-page" target="_blank" class="project-link">GitHub →</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-badge badge-cyan">EdTech · AI</span>
+      <h3>LMS Platform</h3>
+      <p>A full-featured, role-based Learning Management System with an AI assistant built in. Supports students, instructors, and admins — from course creation and quizzes to payments and analytics.</p>
+      <div class="project-footer">
+        <div class="project-tech">
+          <span class="tag">React</span>
+          <span class="tag green">Node.js</span>
+          <span class="tag cyan">MongoDB</span>
+          <span class="tag">Gemini AI</span>
+        </div>
+      </div>
+      <div class="project-footer" style="border-top:none;padding-top:0.5rem;">
+        <a href="https://github.com/methaf5102006-cmyk/LMS_Frontend" target="_blank" class="project-link">Frontend →</a>
+        <a href="https://github.com/methaf5102006-cmyk/LMS-Backend" target="_blank" class="project-link">Backend →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">// get in touch</div>
+  <div class="section-title">Let's Work Together</div>
+  <div class="section-line"></div>
+  <div class="contact-card">
+    <h3>Open to Opportunities 🚀</h3>
+    <p>Whether it's a freelance project, a full-time role, or just a conversation — I'd love to hear from you.</p>
+    <div class="contact-links">
+      <a href="https://github.com/methaf5102006-cmyk" target="_blank" class="contact-link primary">GitHub Profile</a>
+      <a href="https://www.linkedin.com/in/web-developer-6259563a3" target="_blank" class="contact-link">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &lt;/&gt; built by Fiza Liaqat · MERN Stack Developer · 2026
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
